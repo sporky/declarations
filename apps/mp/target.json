@@ -1,0 +1,15 @@
+{
+    "bigip": {
+        "hostname": "69.44.4.18",
+        "username": "admin",
+        "password": "RESOLVE",
+        "waf_policy": "https://raw.githubusercontent.com/sporky/declarations/main/apps/mp/waf/signature_policy.json",
+        "as3_declaration": ""
+    },
+    "f5xc": {
+        "important": "info"
+    },
+    "nginx": {
+        "important": "info"
+    }
+}
