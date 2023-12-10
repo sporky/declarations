@@ -1,0 +1,59 @@
+{
+    "$schema": "https://raw.githubusercontent.com/sporky/declarations/main/schemas/schema_v17_1.json",
+    "policy": {
+        "name": "OpenAPI_Policy",
+        "description": "OpenAPI policy in blocking",
+        "template": {
+            "name": "POLICY_TEMPLATE_RAPID_DEPLOYMENT"
+        },
+        "open-api-files": [
+            {
+                "link": "https://raw.githubusercontent.com/sporky/declarations/main/apps/mp/openapi_v3-20.json"
+            }
+        ],
+        "enforcementMode": "blocking",
+        "server-technologies": [
+            {
+                "serverTechnologyName": "PostgreSQL"
+            },
+            {
+                "serverTechnologyName": "Python"
+            },
+            {
+                "serverTechnologyName": "Unix/Linux"
+            }
+        ],
+        "signature-settings": {
+            "signatureStaging": false
+        },
+        "signature-sets": [
+            {
+                "name": "High Accuracy Signatures",
+                "block": true,
+                "alarm": true,
+                "learn": false
+            }
+        ],
+        "signatures": [
+            {
+                "signatureId": 200101552,
+                "enabled": false,
+                "performStaging": false
+            }
+        ],
+        "whitelist-ips": [
+            {
+                "ipAddress": "10.0.0.1",
+                "ipMask": "255.255.255.255",
+                "description": "always block this ip address",
+                "blockRequests": "always"
+            }
+        ],
+        "disallowed-geolocations": [
+            {
+                "countryName": "American Samoa"
+            }
+        ]
+    },
+    "modifications": []
+}
