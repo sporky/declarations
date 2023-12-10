@@ -7,9 +7,11 @@
         "as3_declaration": ""
     },
     "f5xc": {
+        "tenant": "maybe",
         "important": "info"
     },
     "nginx": {
+        "hostname": "soemwhere",
         "important": "info"
     }
 }

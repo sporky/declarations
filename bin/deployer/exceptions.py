@@ -1,0 +1,2 @@
+class FinishedCollecting(Exception):
+    pass
