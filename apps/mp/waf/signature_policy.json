@@ -8,12 +8,6 @@
         "enforcementMode": "blocking",
         "server-technologies": [
             {
-                "serverTechnologyName": "PostgreSQL"
-            },
-            {
-                "serverTechnologyName": "Python"
-            },
-            {
                 "serverTechnologyName": "Unix/Linux"
             }
         ],
