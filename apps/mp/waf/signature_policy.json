@@ -1,12 +1,18 @@
 {
     "policy": {
-        "name": "SignatureOnlyPolicy",
+        "name": "declarative_signature_policy",
         "description": "Basic signature policy in blocking",
         "template": {
             "name": "POLICY_TEMPLATE_RAPID_DEPLOYMENT"
         },
         "enforcementMode": "blocking",
         "server-technologies": [
+            {
+                "serverTechnologyName": "PostgreSQL"
+            },
+            {
+                "serverTechnologyName": "Python"
+            },
             {
                 "serverTechnologyName": "Unix/Linux"
             }

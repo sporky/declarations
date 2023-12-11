@@ -39,7 +39,7 @@ class WAFDeploy:
         }
 
     def update_policy(self):
-        body = self._body()
+        body = json.dumps(self._body())
         print(f"\n{body}\n")
         url = f"https://{self.targets.bigip.hostname}/mgmt/tm/asm/tasks/import-policy"
         self.s.auth = (self.targets.bigip.username, self.targets.bigip.password)
