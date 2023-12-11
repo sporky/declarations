@@ -7,12 +7,13 @@ class BigIP(BaseModel):
     username: str
     password: str
     waf_policy: str
+    waf_policy_name: str
     as3_declaration: str
 
     @field_validator("password")
     @classmethod
     def resolve_password(cls, v: str) -> str:
-        if v == "RESOLVE":
+        if v == "":
             v = os.environ.get("BIGIP_PASSWORD")
         return v
 

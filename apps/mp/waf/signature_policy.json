@@ -1,5 +1,4 @@
 {
-    "$schema": "https://raw.githubusercontent.com/sporky/declarations/main/schemas/schema_v17_1.json",
     "policy": {
         "name": "SignatureOnlyPolicy",
         "description": "Basic signature policy in blocking",
