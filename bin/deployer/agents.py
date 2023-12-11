@@ -4,6 +4,7 @@ import json
 import requests
 import urllib3
 from urllib3.exceptions import InsecureRequestWarning
+from time import sleep
 
 urllib3.disable_warnings(InsecureRequestWarning)
 
@@ -32,22 +33,37 @@ class WAFDeploy:
         self.s = requests.Session()
         self.s.verify = False
 
-    def _body(self):
+    def _import_body(self):
         return {
             "fileReference": {"link": f"{self.targets.bigip.waf_policy}"},
             "policy": {"fullPath": f"{self.targets.bigip.waf_policy_name}"},
         }
 
+    def _apply_body(self):
+        return {"policy": {"fullPath": f"{self.targets.bigip.waf_policy_name}"}}
+
     def update_policy(self):
-        body = json.dumps(self._body())
+        print("\nupdating policy")
+        body = json.dumps(self._import_body())
         print(f"\n{body}\n")
         url = f"https://{self.targets.bigip.hostname}/mgmt/tm/asm/tasks/import-policy"
         self.s.auth = (self.targets.bigip.username, self.targets.bigip.password)
         r = self.s.post(url=url, data=body)
-        print(f"post response: {r.text}")
+        print(f"update policy response: {r.text}")
+        sleep(5)
 
     def check_policy(self):
-        print("checking policy")
+        print("\nchecking policy")
+        url = f"https://{self.targets.bigip.hostname}/mgmt/tm/asm/tasks/import-policy"
+        r = self.s.get(url=url)
+        print(f"check policy response: {r.text}")
+        sleep(5)
 
     def activate_policy(self):
-        print("activating policy")
+        print("\nactivating policy")
+        body = json.dumps(self._import_body())
+        print(f"\n{body}\n")
+        url = f"https://{self.targets.bigip.hostname}/mgmt/tm/asm/tasks/apply-policy"
+        r = self.s.post(url=url, data=body)
+        print(f"apply policy response: {r.text}")
+        sleep(5)
